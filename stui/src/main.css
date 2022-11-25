@@ -1,0 +1,81 @@
+Client {
+    layout: vertical;
+    content-align: center middle;
+    margin: 1;
+    padding: 2;
+}
+
+SearchScreen{
+    align: center middle;
+    content-align: center middle;
+    padding: 2 2;
+    background: #272822
+}
+
+SearchBox {
+    height: 3;
+    background: rgb(46, 46, 46);
+    color: rgb(214, 214, 214);
+}
+
+AnsiArt {
+    content-align: center middle;
+    align: center middle;
+}
+
+ResultScreen {
+    content-align: center middle;
+    background: #272822
+}
+
+FilterMenu {
+    height: 3;
+    align: center middle;
+    layout: horizontal;
+}
+
+ResultContainer {
+    height: 6;
+    content-align: left middle;
+}
+
+ResultContainer:hover {
+    background: black;
+    border: magenta
+}
+
+ResultInfo {
+    width: 10%;
+    content-align: center middle;
+}
+
+ResultBox {
+    width: 90%;
+    content-align: left middle
+}
+
+QuestionContainer {
+    padding: 1;
+    height: auto;
+    overflow: auto;
+    border: darkgreen
+}
+
+QuestionTitle {
+    padding: 1 2;
+    background: $boost;
+    text-align: center;
+    text-style: bold;   
+}
+
+CommentContainer {
+    padding-left: 2;
+}
+
+CommentText {
+    padding: 1;
+    height: auto;
+    width: 50%;
+    border: lightgreen;
+    dock: left;
+}

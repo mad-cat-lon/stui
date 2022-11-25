@@ -1,0 +1,54 @@
+Client {
+    layout: vertical;
+    content-align: center middle;
+    margin: 1;
+    padding: 2;
+}
+
+SearchScreen{
+    align: center middle;
+    content-align: center middle;
+    padding: 2 2
+}
+
+SearchBox {
+    height: 3;
+    background: rgb(41, 40, 40);
+    color: white;
+}
+
+AnsiArt {
+    content-align: center middle;
+    align: center middle;
+}
+
+ResultScreen {
+    content-align: center middle;
+}
+
+FilterMenu {
+    height: 3;
+    align: center middle;
+    layout: horizontal;
+}
+
+ResultBox {
+    height: 6;
+    content-align: left middle;
+    overflow: scroll;
+    border: green;
+}
+
+QuestionContainer {
+    padding: 2;
+    height: auto;
+    overflow: auto;
+    border: darkgreen
+}
+
+
+CommentContainer {
+    padding: 1;
+    height: auto;
+    border: lightgreen
+}
