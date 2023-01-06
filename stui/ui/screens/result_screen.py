@@ -5,6 +5,7 @@ from textual.containers import Container
 from textual.widgets import Footer
 
 from ..widgets.result import ResultContainer, ResultInfo, ResultBox, FilterMenu
+from stui.src import events as src_events
 
 class ResultScreen(Screen):
     """Display results of a query with a FilterMenu"""
@@ -40,13 +41,15 @@ class ResultScreen(Screen):
         for index, result_container in enumerate(self.query(ResultContainer)):
             result_container.result_box.result = filtered_newest[index]
             result_container.result_info.result = filtered_newest[index]
-
+            result_container.result = filtered_newest[index]
+            
     def filter_active(self) -> None:
         """Filters raw results by most recently active"""
         filtered_active = sorted(self.raw_results, key=lambda result: result["last_activity_date"], reverse=True)
         for index, result_container in enumerate(self.query(ResultContainer)):
             result_container.result_box.result = filtered_active[index]
             result_container.result_info.result = filtered_active[index]
+            result_container.result = filtered_active[index]
 
     def filter_highest_score(self) -> None:
         """Filters raw results by highest score"""
@@ -54,6 +57,7 @@ class ResultScreen(Screen):
         for index, result_container in enumerate(self.query(ResultContainer)):
             result_container.result_box.result = filtered_highest_score[index]
             result_container.result_info.result = filtered_highest_score[index]  
+            result_container.result = filtered_highest_score[index]
 
     def filter_unanswered(self) -> None:
         """Filters raw results by unanswered"""
@@ -61,14 +65,16 @@ class ResultScreen(Screen):
         for index, result_container in enumerate(self.query(ResultContainer)):
             result_container.result_box.result = filtered_unanswered[index]
             result_container.result_info.result = filtered_unanswered[index]
-            
+            result_container.result = filtered_unanswered[index]
+
     def filter_most_answers(self) -> None:
         """Filters raw results by most answers"""
         filtered_most_answers = sorted(self.raw_results, key=lambda result: result["answer_count"], reverse=True)
         for index, result_container in enumerate(self.query(ResultContainer)):
             result_container.result_box.result = filtered_most_answers[index]
             result_container.result_info.result = filtered_most_answers[index]
-
+            result_container.result = filtered_most_answers[index]
+            
     def on_filter_menu_filter_request(self, message: FilterMenu.FilterRequest) -> None:
         """Handles the FilterRequest event when a filter button is clicked"""
         if message.filter == "filter_active":
@@ -82,10 +88,12 @@ class ResultScreen(Screen):
         elif message.filter == "filter_most_answers":
             self.filter_most_answers()
 
-    def on_result_container_result_click(self, message: ResultContainer.ResultClick) -> None:
+    def on_result_click(self, message: src_events.ResultClick) -> None:
         self.app.show_question(message.result)
 
     def compose(self) -> ComposeResult:
         yield FilterMenu()
-        yield Container(*tuple(self.result_containers))
+        yield Container(
+            *tuple(self.result_containers)
+        )
         yield Footer()

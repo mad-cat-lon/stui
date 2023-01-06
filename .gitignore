@@ -1,2 +1,3 @@
 __pycache__/
 *.py[cod]
+stui/ui/screens/result_screen.py

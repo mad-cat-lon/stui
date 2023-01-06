@@ -4,15 +4,13 @@ from textual.widgets import Static
 from textual.app import ComposeResult
 from textual.reactive import reactive
 from textual.message import Message, MessageTarget
+from textual import events
+
+from stui.src import events as src_events
 
 class ResultInfo(Widget):
     """Displays score, views and answer counts next to the ResultBox"""
     result: reactive[dict | None] = reactive({})
-    # class ResultHover(Message):
-    #     """Send a message back if mouse hovers over result box"""
-    #     def __init__(self, sender: MessageTarget, value: bool):
-    #         self.value = value
-    #         super().__init__(sender)
 
     def __init__(self, result) -> None:
         super().__init__()
@@ -28,6 +26,9 @@ class ResultInfo(Widget):
         render_str = f"{score_val} {score_sym}\n{view_val} {view_sym}\n{answer_val} {answer_sym}"
         return render_str
     
-    # def watch_mouse_over(self, value: bool):
-    #     return self.emit_no_wait(self.ResultHover(self, True))
+    async def on_click(self, event: events.Click) -> Message:
+        return self.emit_no_wait(src_events.ResultClick(self, self.result))
 
+    def watch_mouse_over(self, value: bool) -> None:
+        # TODO: Find a less hacky way to do this
+        self.parent.toggle_class("hover")   

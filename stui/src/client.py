@@ -8,9 +8,8 @@ class Client(App):
 
     CSS_PATH = "main.css"
     BINDINGS = [
-        ("d", "toggle_dark", "Toggle dark mode"),
-        ("e", "exit", "Exit browser"),
-        ("s", "push_screen('search')", "Search page")
+        ("e", "app.exit", "Exit browser"),
+        ("s", "app.push_screen('search')", "Search page")
         ]
     SCREENS = {
         "search": SearchScreen(name="search")
@@ -52,6 +51,7 @@ class Client(App):
             self.push_screen(self.SCREENS[f"result-{query}"])
             return 
 
+    #TODO: Remove unused screens to save on memory
     def show_question(self, result) -> None:
         question_id = result["question_id"]
         if question_id not in self.SCREENS.keys():
@@ -61,10 +61,7 @@ class Client(App):
             self.push_screen(self.SCREENS[question_id])
         else:
             self.push_screen(self.SCREENS[question_id])
-
-    def action_toggle_dark(self) -> None:
-        self.dark = not self.dark 
-
+            
     def action_exit(self) -> None:
         exit() 
 

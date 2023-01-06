@@ -24,6 +24,12 @@ AnsiArt {
 }
 
 ResultScreen {
+    padding: 1 1;
+    content-align: center middle;
+    background: #272822
+}
+
+QuestionScreen {
     content-align: center middle;
     background: #272822
 }
@@ -34,19 +40,34 @@ FilterMenu {
     layout: horizontal;
 }
 
-ResultContainer {
+#ResultContainer {
     height: 6;
     content-align: left middle;
+    border: #E69F66;
+    background: #272822
 }
 
-ResultContainer:hover {
-    background: black;
-    border: magenta
+#ResultContainer:hover {
+    border: double #E69F66
+}
+
+#ResultContainer.hover {
+    border: double #E69F66
+}
+
+#ResultContainer.accepted {
+    border: #A6E22E;
+    background: #272822;
+}
+
+#ResultContainer.accepted.hover {
+    border: double #A6E22E;
 }
 
 ResultInfo {
     width: 10%;
-    content-align: center middle;
+    padding-left: 2;
+    content-align: left middle;
 }
 
 ResultBox {
@@ -54,28 +75,49 @@ ResultBox {
     content-align: left middle
 }
 
+
+Vertical {
+    padding: 2 2;
+    height: auto;
+}
+
+#QuestionSection {
+    height: auto;
+    padding: 1 1;
+    border: #E69F66;
+    background: #272822
+}
+
 QuestionContainer {
-    padding: 1;
     height: auto;
     overflow: auto;
-    border: darkgreen
+}
+
+#AnswerContainer {
+    padding: 1 1;
+    height: auto;
+    overflow: auto;
+    border: #E6DB74;
+    background: #272822
 }
 
 QuestionTitle {
     padding: 1 2;
-    background: $boost;
+    border: double #F92672;
     text-align: center;
     text-style: bold;   
 }
 
 CommentContainer {
     padding-left: 2;
+    height: auto;
+    width: auto;
 }
 
 CommentText {
     padding: 1;
     height: auto;
     width: 50%;
-    border: lightgreen;
+    border: #66D9EF;
     dock: left;
 }
