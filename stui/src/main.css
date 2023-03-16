@@ -75,7 +75,6 @@ ResultBox {
     content-align: left middle
 }
 
-
 Vertical {
     padding: 2 2;
     height: auto;
@@ -98,6 +97,14 @@ QuestionContainer {
     height: auto;
     overflow: auto;
     border: #E6DB74;
+    background: #272822
+}
+
+#AnswerContainer.accepted {
+    padding: 1 1;
+    height: auto;
+    overflow: auto;
+    border: double #A6E22E;
     background: #272822
 }
 

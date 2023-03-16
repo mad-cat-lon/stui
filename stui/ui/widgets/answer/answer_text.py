@@ -9,5 +9,7 @@ class AnswerText(Static):
         self.answer = answer
     
     def render(self) -> ComposeResult:
-        return Markdown(self.answer["body_markdown"])
+        render_str = self.answer["body_markdown"]
+        render_str += f"\n - {self.answer['owner']['display_name']}"
+        return Markdown(render_str)
     

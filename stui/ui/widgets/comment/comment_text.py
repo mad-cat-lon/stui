@@ -12,5 +12,5 @@ class CommentText(Static):
     
     def render(self) -> ComposeResult:
         render_str = self.comment["body_markdown"] 
-        render_str += f" - {self.comment['owner']['display_name']}"
+        render_str += f"\n - {self.comment['owner']['display_name']}"
         return Markdown(render_str)

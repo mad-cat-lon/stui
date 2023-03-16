@@ -22,8 +22,10 @@ class SearchBox(Input):
         super().__init__(placeholder="Enter your search term here: ")
 
     def action_paste(self) -> None:
-        x = Tk()
-        x.withdraw()
-        value = x.clipboard_get()
+        # Action that lets us paste to the search box
+        tk = Tk()
+        tk.withdraw()
+        value = tk.clipboard_get()
         self.value = value
         self.cursor_position = len(self.value)
+        
